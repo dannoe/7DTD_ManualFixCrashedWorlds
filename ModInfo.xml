@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+	<ModInfo>
+		<Name value="ManualFixCrashedWorlds" />
+		<Description value="With this mod you can manually set your skillpoints, death, zombiekills, expierence and level. Use with care!" />
+		<Author value="IDoNotCare" />
+		<Version value="0.0.1" />
+		<Website value="https://github.com/dannoe/7DTD_ManualFixCrashedWorlds" />
+	</ModInfo>
+</xml>
