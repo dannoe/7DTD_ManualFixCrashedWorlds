@@ -12,6 +12,8 @@ namespace _7DTD_Test
             "setzombiekills"
         };
 
+        public override bool IsExecuteOnClient => true;
+
         public override string GetDescription()
         {
             return "Set your zombiekills";
@@ -20,7 +22,11 @@ namespace _7DTD_Test
         public override void Execute(List<string> _params, CommandSenderInfo _senderInfo)
         {
             if (GameManager.IsDedicatedServer)
+            {
                 SingletonMonoBehaviour<SdtdConsole>.Instance.Output("cannot execute setzombiekills on dedicated server, please execute as a client");
+                return;
+            }
+                
             if (_params.Count < 1)
             {
                 SingletonMonoBehaviour<SdtdConsole>.Instance.Output("setzombiekills requires kills as integer");

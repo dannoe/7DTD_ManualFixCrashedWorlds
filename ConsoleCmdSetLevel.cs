@@ -9,6 +9,8 @@ namespace _7DTD_Test
             "setlevel"
         };
 
+        public override bool IsExecuteOnClient => true;
+
         public override string GetDescription()
         {
             return "Set your level";
@@ -17,7 +19,11 @@ namespace _7DTD_Test
         public override void Execute(List<string> _params, CommandSenderInfo _senderInfo)
         {
             if (GameManager.IsDedicatedServer)
+            {
                 SingletonMonoBehaviour<SdtdConsole>.Instance.Output("cannot execute setlevel on dedicated server, please execute as a client");
+                return;
+            }
+                
             if (_params.Count < 1)
             {
                 SingletonMonoBehaviour<SdtdConsole>.Instance.Output("setlevel requires level as integer");

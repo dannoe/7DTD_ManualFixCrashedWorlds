@@ -9,6 +9,8 @@ namespace _7DTD_Test
             "setdeaths"
         };
 
+        public override bool IsExecuteOnClient => true;
+
         public override string GetDescription()
         {
             return "Set your number of deaths";
@@ -17,8 +19,12 @@ namespace _7DTD_Test
         public override void Execute(List<string> _params, CommandSenderInfo _senderInfo)
         {
             if (GameManager.IsDedicatedServer)
+            {
                 SingletonMonoBehaviour<SdtdConsole>.Instance.Output(
                     "cannot execute setdeaths on dedicated server, please execute as a client");
+                return;
+            }
+                
             if (_params.Count < 1)
             {
                 SingletonMonoBehaviour<SdtdConsole>.Instance.Output("setdeaths requires deaths as integer");
